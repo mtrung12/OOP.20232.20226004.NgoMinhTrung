@@ -1,0 +1,19 @@
+Ngo Minh Trung 20226004
+-What happens if users choose “Cancel”?
+
+Answer: 
+If users choose "Cancel", there will be a pop-up message show  that "You've chosen: No".
+Because option will be 1 if users choose "Yes", and it will be 0 otherwise. Hence it will display "No" if we choose Cancel.
+
+
+
+-How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t”?
+
+Answer:
+
+Add a title and JOptionPane.YES_NO_OPTION to JOptionPane.showConfirmDialog
+And the choices can be modified by adding more argument to it: JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]
+choice[] is the array of two choices
+
+For example: 
+int option = JOptionPane.showOptionDialog(null, "Do you want to change to the first class ticket?", "Choose Option", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choice, choice[0]);
