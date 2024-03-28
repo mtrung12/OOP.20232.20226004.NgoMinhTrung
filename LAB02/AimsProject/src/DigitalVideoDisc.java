@@ -4,6 +4,7 @@ public class DigitalVideoDisc {
     private String director;
     private int length;
     private float cost;
+    private static int nbDigitalVideoDisc = 0;
     //constructor
     public DigitalVideoDisc(String title) {
         this.title = title;
@@ -47,6 +48,11 @@ public class DigitalVideoDisc {
     }
     public float getCost() {
         return cost;
+    }
+
+
+    public void setTitle(String title) {
+        this.title = title;
     }
     
     
