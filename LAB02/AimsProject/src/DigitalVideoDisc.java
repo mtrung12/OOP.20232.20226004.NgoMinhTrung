@@ -5,9 +5,12 @@ public class DigitalVideoDisc {
     private int length;
     private float cost;
     private static int nbDigitalVideoDisc = 0;
+    private int id=0;
     //constructor
     public DigitalVideoDisc(String title) {
         this.title = title;
+        id=nbDigitalVideoDisc;
+        nbDigitalVideoDisc++;
     }
     
     
@@ -15,13 +18,18 @@ public class DigitalVideoDisc {
         this.title = title;
         this.category = category;
         this.cost = cost;
+        id=nbDigitalVideoDisc;
+        nbDigitalVideoDisc++;
     }
+    
 
     public DigitalVideoDisc(String title, String category, String director, float cost) {
         this.title = title;
         this.category = category;
         this.director = director;
         this.cost = cost;
+        id=nbDigitalVideoDisc;
+        nbDigitalVideoDisc++;
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
@@ -30,6 +38,8 @@ public class DigitalVideoDisc {
         this.director = director;
         this.length = length;
         this.cost = cost;
+        id=nbDigitalVideoDisc;
+        nbDigitalVideoDisc++;
     }
 
 
@@ -49,7 +59,9 @@ public class DigitalVideoDisc {
     public float getCost() {
         return cost;
     }
-
+    public int getID(){
+        return id;
+    }
 
     public void setTitle(String title) {
         this.title = title;

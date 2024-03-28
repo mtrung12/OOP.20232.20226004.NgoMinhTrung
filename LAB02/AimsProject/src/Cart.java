@@ -74,7 +74,7 @@ public class Cart {
     public void dispCart(){
         for(int i=0;i<MAX_NUMBERS_ORDERED;i++){
             if(itemsOrdered[i]!=null){
-                System.out.printf("%2d. %-17s %.2f", i+1, itemsOrdered[i].getTitle(), itemsOrdered[i].getCost());
+                System.out.printf("%2d. %-17s %.2f   ID: %d", i+1, itemsOrdered[i].getTitle(), itemsOrdered[i].getCost(), itemsOrdered[i].getID());
                 System.out.println("");
             }
             else break;
