@@ -1,1 +1,0 @@
-JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, "I do", "I don't"
