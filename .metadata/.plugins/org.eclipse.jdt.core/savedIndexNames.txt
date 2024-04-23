@@ -1,0 +1,1 @@
+INDEX VERSION 1.134+F:\std\OOP\OOP sc\OOP.20232.20226004.NgoMinhTrung\.metadata\.plugins\org.eclipse.jdt.core
