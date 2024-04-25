@@ -1,4 +1,4 @@
-package hust.soict.ict.garbage;
+package hust.soict.ict.aims.garbage;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;

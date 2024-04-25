@@ -1,4 +1,4 @@
-package hust.soict.ict.garbage;
+package hust.soict.ict.aims.garbage;
 import java.util.Random;
 public class ConcatenationInLoops {
     public static void main(String[] args){

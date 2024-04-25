@@ -1,4 +1,4 @@
-package hust.soict.ict.disc;
+package hust.soict.ict.aims.disc;
 public class DigitalVideoDisc {
     private String title;
     private String category;
