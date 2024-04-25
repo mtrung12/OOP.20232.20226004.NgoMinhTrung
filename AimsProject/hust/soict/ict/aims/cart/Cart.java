@@ -74,7 +74,7 @@ public class Cart {
 
     //display cart list
     public void print(){
-        for(int i=0;i<MAX_NUMBERS_ORDERED;i++){
+        for(int i=0;i<qtyOrdered;i++){
             if(itemsOrdered[i]!=null){
                 System.out.println(itemsOrdered[i].toString());
             }
