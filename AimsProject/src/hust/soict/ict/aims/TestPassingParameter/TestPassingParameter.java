@@ -1,5 +1,5 @@
 package hust.soict.ict.aims.TestPassingParameter;
-import hust.soict.ict.aims.disc.DigitalVideoDisc;
+import hust.soict.ict.aims.media.DigitalVideoDisc;
 public class TestPassingParameter {
     public static void main(String[] args){
         //TODO Auto-generated method stub
