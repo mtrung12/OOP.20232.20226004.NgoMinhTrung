@@ -74,7 +74,9 @@ public class DigitalVideoDisc {
         return text;
     }
     public boolean isMatch(String title){
-        if(this.title.equals(title)) return true;
+        String title1Upper = title.toUpperCase();
+        String title2Upper = this.title.toUpperCase();
+        if(title2Upper.contains(title1Upper)) return true;
         return false;
     }
 
