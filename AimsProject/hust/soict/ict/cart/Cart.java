@@ -76,12 +76,35 @@ public class Cart {
     public void print(){
         for(int i=0;i<MAX_NUMBERS_ORDERED;i++){
             if(itemsOrdered[i]!=null){
-                String text = itemsOrdered[i].toString();
-                System.out.printf(text);
-                System.out.println();
+                System.out.println(itemsOrdered[i].toString());
             }
             else break;
         }
     }
+
+    public void dvdFind(String title){
+        boolean notFound=true;
+        for(int i=0;itemsOrdered[i]!=null;i++){
+            if(itemsOrdered[i].isMatch(title)){
+                String text = itemsOrdered[i].toString();
+                System.out.println("Result: "+text);
+                notFound=false;
+            }
+        }
+        if(notFound)System.out.println("No matched item with title: "+title+"." );
+    }
+
+    public void dvdFind(int id){
+        boolean notFound=true;
+        for(int i=0;itemsOrdered[i]!=null;i++){
+            if(itemsOrdered[i].getID()==id){
+                String text = itemsOrdered[i].toString();
+                System.out.println("Result: "+text);
+                notFound=false;
+            }
+        }
+        if(notFound)System.out.println("No matched item with ID "+id+".");
+    }
+
 
 }

@@ -14,6 +14,7 @@ public class Aims{
     order.addDigitalVideoDisc(discList);
     System.out.println("\nHere is your bill:");
     order.print();
-    
+    order.dvdFind("Lion");
+    order.dvdFind("pi");
 }
 }
