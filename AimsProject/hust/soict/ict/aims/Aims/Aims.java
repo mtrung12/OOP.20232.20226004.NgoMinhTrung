@@ -1,6 +1,6 @@
-package hust.soict.ict.Aims;
-import hust.soict.ict.cart.Cart;
-import hust.soict.ict.disc.DigitalVideoDisc;
+package hust.soict.ict.aims.Aims;
+import hust.soict.ict.aims.cart.Cart;
+import hust.soict.ict.aims.disc.DigitalVideoDisc;
 public class Aims{
     public static void main(String[] args){
     //create a new order

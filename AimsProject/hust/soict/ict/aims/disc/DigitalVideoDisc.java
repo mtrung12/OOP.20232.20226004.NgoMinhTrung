@@ -1,4 +1,4 @@
-package hust.soict.ict.disc;
+package hust.soict.ict.aims.disc;
 public class DigitalVideoDisc {
     private String title;
     private String category;
@@ -70,7 +70,6 @@ public class DigitalVideoDisc {
     
     public String toString(){
         String text = String.format("%2d.DVD-%-25s %-15s %-20s %2d: %3.2f$", id, title, category, director, length, cost);
-        //return ""+id+"."+title+" "+category+" "+director+" "+length+" "+cost+"$";
         return text;
     }
     public boolean isMatch(String title){
