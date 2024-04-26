@@ -46,6 +46,9 @@ public abstract class Media implements Comparable<Media>{
         String text = String.format("%2d-%-25s-%-25s: %4.2f$", id, title, category, cost);
         return text;
     }
+    public void play() {
+        System.out.println("Playing media");
+    }
 
     @Override
     public boolean equals(Object o){
