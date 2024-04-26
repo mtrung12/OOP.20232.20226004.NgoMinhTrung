@@ -11,6 +11,7 @@ public class Store {
         }
         else{
             itemsInStore.add(media);
+
         }
         
     }
