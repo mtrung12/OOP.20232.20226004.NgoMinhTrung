@@ -44,4 +44,12 @@ public abstract class Media {
         String text = String.format("%2d-%-25s %-15s: %4.2f$", id, title, category, cost);
         return text;
     }
+
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof Media)){
+            return false;
+        }
+        return ((Media)o).getTitle()==this.title;
+    }
 }
