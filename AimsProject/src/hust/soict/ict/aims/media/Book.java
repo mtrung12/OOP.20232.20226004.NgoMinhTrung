@@ -32,7 +32,7 @@ public class Book extends Media{
     @Override
     public String toString(){
         String authorsString = String.join(", ", authors);
-        String text = String.format("%2d.%-4s-%-25s-%-25s-%-20s: %4.2f$", super.getId(),"Book", super.getTitle(), super.getCategory(), authorsString, super.getCost());
+        String text = String.format("%2d.%-4s-%-25s-%-25s-%-27s: %-4.2f$", super.getId(),"Book", super.getTitle(), super.getCategory(), authorsString, super.getCost());
         return text;
     }
 }
