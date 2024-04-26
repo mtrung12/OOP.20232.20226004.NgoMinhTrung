@@ -1,12 +1,16 @@
 package hust.soict.ict.aims.media;
 
 
-public class DigitalVideoDisc extends Disc{
+public class DigitalVideoDisc extends Disc implements Playable{
     private String director;
     private int length;
 
-    public DigitalVideoDisc(int id, String title, String category, String director, int length, float cost) {
-        super(id, title, category, director, length, cost);
+    //constructor
+    public DigitalVideoDisc(String title){
+        super(title);
+    }
+    public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+        super(title, category, director, length, cost);
     }
 
 
@@ -29,5 +33,9 @@ public class DigitalVideoDisc extends Disc{
         return false;
     }
 
+    public void play(){
+        System.out.println("Playing DVD: " + this.getTitle());
+        System.out.println("DVD length: " + this.getLength());
+    }   
     
 }

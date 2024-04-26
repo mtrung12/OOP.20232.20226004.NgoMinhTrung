@@ -5,12 +5,16 @@ public abstract class Media {
     private String title;
     private String category;
     private float cost;
-    
-    public Media(int id, String title, String category, float cost) {
-        this.id = id;
+    private static int nbMedia=0;
+    public Media(String title){
+        this.title=title;
+    }
+    public Media(String title, String category, float cost) {
         this.title = title;
         this.category = category;
         this.cost = cost;
+        nbMedia++;
+        id=nbMedia;
     }
     public int getId() {
         return id;
