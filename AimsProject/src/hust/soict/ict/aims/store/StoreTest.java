@@ -1,5 +1,5 @@
 package hust.soict.ict.aims.store;
-import hust.soict.ict.aims.disc.DigitalVideoDisc;
+import hust.soict.ict.aims.media.*;
 public class StoreTest{
     public static void main(String[] args){
     Store store = new Store();
