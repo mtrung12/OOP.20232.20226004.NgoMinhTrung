@@ -19,14 +19,20 @@ public class Book extends Media{
         if(!authors.contains(authorName)){
             authors.add(authorName);
         }
-        else System.out.println("Author "+authorName +" is already in the author list.");
+        else System.out.println("Author "+authorName +" is already in the author list of "+"\""+super.getTitle()+"\".");
     }
 
     public void removeAuthor(String authorName){
         if(authors.contains(authorName)){
             authors.remove(authorName);
         }
-        else System.out.println("Author "+authorName+" is not in the author list.");
+        else System.out.println("Author "+authorName+" is not in the author list"+"\""+super.getTitle()+"\".");
     }
-    
+
+    @Override
+    public String toString(){
+        String authorsString = String.join(", ", authors);
+        String text = String.format("%2d.%-4s-%-25s-%-25s-%-20s: %4.2f$", super.getId(),"Book", super.getTitle(), super.getCategory(), authorsString, super.getCost());
+        return text;
+    }
 }

@@ -22,8 +22,9 @@ public class DigitalVideoDisc extends Disc implements Playable{
         return length;
     }
     
+    @Override
     public String toString(){
-        String text = String.format("%2d.DVD-%-25s %-15s %-20s %2d: %4.2f$", super.getId(), super.getTitle(), super.getCategory(), director, length, super.getCost());
+        String text = String.format("%2d.%-4s-%-25s-%-25s-%-20s-%2ds: %4.2f$", super.getId(),"DVD", super.getTitle(), super.getCategory(), super.getDirector(), super.getLength(), super.getCost());
         return text;
     }
     public boolean isMatch(String title){
