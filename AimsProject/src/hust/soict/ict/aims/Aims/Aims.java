@@ -33,13 +33,13 @@ public class Aims{
         CompactDisc cd2 = new CompactDisc("Kind of Blue", "Jazz", "Miles Davis", 15.50f);
         Track track4 = new Track("So What", 431);  
         Track track5 = new Track("Freddie Freeloader", 539);
-        cd1.addTrack(track4); cd1.addTrack(track5); 
+        cd2.addTrack(track4); cd2.addTrack(track5); 
 
         CompactDisc cd3 = new CompactDisc("Bohemian Rhapsody", "Rock", "Queen", 11.99f);
         Track track6 = new Track("Bohemian Rhapsody", 355); 
         Track track7 =  new Track("Killer Queen", 205); 
         Track track8 = new Track("Somebody to Love", 296); 
-        cd1.addTrack(track6); cd1.addTrack(track7); cd1.addTrack(track8);
+        cd3.addTrack(track6); cd3.addTrack(track7); cd3.addTrack(track8);
         
         store.addMedia(cd1); store.addMedia(cd2); store.addMedia(cd3);
 

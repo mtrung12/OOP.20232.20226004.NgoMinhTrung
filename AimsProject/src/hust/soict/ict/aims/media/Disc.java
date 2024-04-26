@@ -25,5 +25,27 @@ public class Disc extends Media{
     public String getDirector() {
         return director;
     }
+    @Override
+    public int compareTo(Media other) {
+        if (other instanceof Disc) {
+            Disc otherDVD = (Disc) other;
+            int titleComparison = this.getTitle().compareTo(otherDVD.getTitle());
+            if (titleComparison != 0) {
+                // Compare by title
+                return titleComparison;
+            } else {
+                // Compare by decreasing length
+                int lengthComparison = Integer.compare(otherDVD.getLength(), this.getLength());
+                if (lengthComparison != 0) {
+                    return lengthComparison;
+                } else {
+                    // Compare by cost
+                    return Double.compare(this.getCost(), otherDVD.getCost());
+                }
+            }
+        } else {
+            return super.compareTo(other);
+        }
+    }
     
 }

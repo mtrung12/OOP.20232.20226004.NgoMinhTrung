@@ -77,9 +77,6 @@ public class Cart {
         }
         return null;
     }
-    public void sortByCost(){
-
-    }
     //empty the cart
     public void empty(){
         for(Media media:itemsOrdered){
