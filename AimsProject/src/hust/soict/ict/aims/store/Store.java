@@ -5,8 +5,14 @@ public class Store {
     int quantity = 0;
     DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[40];
     public void addDVD(DigitalVideoDisc dvd){
-        itemsInStore[quantity]=dvd;
-        quantity++;
+        if(!itemsInStore.contains(dvd)){
+            itemsInStore[quantity]=dvd;
+            quantity++;
+        }
+        else{
+            System.out.println("The DVD" + dvd.getTitle() = "is already in the store.");
+        }
+        
     }
     public void removeDVD(DigitalVideoDisc dvd){
         int i = 0;
