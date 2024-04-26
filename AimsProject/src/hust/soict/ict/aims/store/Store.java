@@ -1,46 +1,34 @@
 package hust.soict.ict.aims.store;
+import java.util.ArrayList;
+
 import hust.soict.ict.aims.media.*;
 
 public class Store {
-    int quantity = 0;
-    DigitalVideoDisc itemsInStore[] = new DigitalVideoDisc[40];
-    public void addDVD(DigitalVideoDisc dvd){
-        if(!itemsInStore.contains(dvd)){
-            itemsInStore[quantity]=dvd;
-            quantity++;
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
+    public void addMedia(Media media){
+        if(itemsInStore.contains(media)){
+            System.out.println("\""+media.getTitle()+"\" is already in the store.");
         }
         else{
-            System.out.println("The DVD" + dvd.getTitle() = "is already in the store.");
+            itemsInStore.add(media);
+
         }
         
     }
-    public void removeDVD(DigitalVideoDisc dvd){
-        int i = 0;
-        while(i<quantity){
-            if(itemsInStore[i].equals(dvd)){
-                itemsInStore[i]=null;
-                //swap element of array
-                for(int j = i;j<quantity;j++){
-                    DigitalVideoDisc temp;
-                    temp = itemsInStore[j];
-                    itemsInStore[j]=itemsInStore[j+1];
-                    itemsInStore[j+1]=temp;
-                }
-                return;
+    public void removeMedia(Media media){
+        if(itemsInStore.size()==0){
+            System.out.println("Empty Store! Nothing to remove.");
+        }
+        else{
+            if(!itemsInStore.contains(media)){
+                System.out.println("\""+media.getTitle()+"\" is not in the store.");
             }
-            i++;
-            if(i==quantity){
-                System.out.println("Cannot find matched DVD to remove.");
-                return;
+            else{
+                itemsInStore.remove(media);
             }
         }
     }
     public void print(){
-        for(int i=0;i<quantity;i++){
-            if(itemsInStore[i]!=null){
-                System.out.println(itemsInStore[i].toString());
-            }
-            else break;
-        }
+        
     }
 }
