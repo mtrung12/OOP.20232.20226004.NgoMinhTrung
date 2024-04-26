@@ -40,5 +40,8 @@ public abstract class Media {
     public void setCost(float cost) {
         this.cost = cost;
     }
-    
+    public String toString(){
+        String text = String.format("%2d-%-25s %-15s: %4.2f$", id, title, category, cost);
+        return text;
+    }
 }
