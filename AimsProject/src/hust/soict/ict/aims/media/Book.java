@@ -8,12 +8,7 @@ public class Book extends Media{
     public Book(String title, String category, float cost) {
         super(title, category, cost);
     }
-    public List<String> getAuthors() {
-        return authors;
-    }
-    public void setAuthors(List<String> authors) {
-        this.authors = authors;
-    }
+    
 
     public void addAuthor(String authorName){
         if(!authors.contains(authorName)){

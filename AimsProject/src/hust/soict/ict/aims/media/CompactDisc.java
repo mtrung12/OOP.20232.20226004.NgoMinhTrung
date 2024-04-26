@@ -43,7 +43,7 @@ public class CompactDisc extends Disc implements Playable{
 
     @Override
     public String toString(){
-        String text = String.format("%2d.%-4s-%-25s-%-25s-%-20s-%5ds: %4.2f$", super.getId(),"CD", super.getTitle(), super.getCategory(), super.getDirector(), super.getLength(), super.getCost());
+        String text = String.format("%2d.%-4s-%-25s-%-25s-%-20s-%5ds: %4.2f$", super.getId(),"CD", super.getTitle(), super.getCategory(), super.getDirector(), this.getLength(), super.getCost());
         return text;
     }
 }
