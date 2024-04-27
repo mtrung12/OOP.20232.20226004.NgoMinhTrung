@@ -120,7 +120,6 @@ public class Aims{
                     back=true;
                     break;
                 case 1:
-                    clc();
                     while(true){
                         System.out.print("Enter the title of the media to view details(Press 0 to return): ");
                         String title = scanner.nextLine();
@@ -156,7 +155,6 @@ public class Aims{
                     }
                     break; 
                 case 3:
-                    clc();
                     while(true){
                         System.out.print("Enter the title of the media to play(Press 0 to return): ");
                         String title = scanner.nextLine();
@@ -169,7 +167,7 @@ public class Aims{
                             foundMedia.play();
                         }
                         else{
-                            System.out.println(title+ "cannot be played! Please try another.");
+                            System.out.println(title+ " cannot be played! Please try another.");
                         }
                     }
                     break;
@@ -219,7 +217,7 @@ public class Aims{
                     media.play();
                 }
                 else{
-                    System.out.println(media.getTitle()+ "cannot be played! Please try another.");
+                    System.out.println(media.getTitle()+ " cannot be played! Please try another.");
                 }
                     break;
                 default:
@@ -318,7 +316,7 @@ public class Aims{
                         }
                         else{
                             clc();
-                            System.out.println(title+ "cannot be played! Please try another.");
+                            System.out.println(title+ " cannot be played! Please try another.");
                         }
                     }
                     break;

@@ -34,7 +34,7 @@ public class CompactDisc extends Disc implements Playable{
     
     @Override
     public void play(){
-        System.out.println("Playing CD: " + this.getTitle());
+        System.out.println("Playing CD: " + super.getTitle());
         System.out.println("CD length: " + this.getLength());
         for(Track track: tracks){
             track.play();

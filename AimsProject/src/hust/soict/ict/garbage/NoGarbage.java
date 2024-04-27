@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class NoGarbage {
     public static void main(String[] args) {
-        String filename = "test.exe";
+        String filename = "src/test.exe";
         byte[] inputBytes = {0};
         long startTime, endTime;
 
