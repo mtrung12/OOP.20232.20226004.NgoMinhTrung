@@ -3,7 +3,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable{
-    private String artist;
     private List<Track> tracks= new ArrayList<Track>();
 
     public CompactDisc(String title, String category, String artist, float cost) {
@@ -35,9 +34,12 @@ public class CompactDisc extends Disc implements Playable{
     @Override
     public void play(){
         System.out.println("Playing CD: " + super.getTitle());
-        System.out.println("CD length: " + this.getLength());
-        for(Track track: tracks){
-            track.play();
+        if(this.getLength()==0) System.out.println("CD cannot be played!");
+        else{
+            System.out.println("CD length: " + this.getLength());
+            for(Track track: tracks){
+                track.play();
+            }
         }
     }
 
