@@ -62,7 +62,7 @@ public class Cart {
             System.out.println(media.toString());
         }
         System.out.println("Total items: " + itemsOrdered.size());
-        System.out.println("Total cost: " + totalCost());
+        System.out.println("Total cost: " + totalCost()+"$");
         System.out.println("----------------------------------------------------------------------------------------------");
     }
     public Media searchByTitle(String title){
