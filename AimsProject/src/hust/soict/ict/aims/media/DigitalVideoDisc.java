@@ -37,7 +37,10 @@ public class DigitalVideoDisc extends Disc implements Playable{
     @Override
     public void play(){
         System.out.println("Playing DVD: " + super.getTitle());
-        System.out.println("DVD length: " + super.getLength());
+        if(super.getLength()==0){
+            System.out.println("DVD cannot be played.");
+        }
+        else System.out.println("DVD length: " + super.getLength());
     }   
     
 }

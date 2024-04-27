@@ -1,6 +1,5 @@
 package hust.soict.ict.aims.Aims;
 import java.util.Scanner;
-
 import javax.naming.LimitExceededException;
 
 import hust.soict.ict.aims.cart.Cart;
@@ -71,28 +70,29 @@ public class Aims{
             System.out.println("0. Exit");
             System.out.println("--------------------------------");
             System.out.println("Please choose a number: 0-1-2-3");
-            int option = scanner.nextInt();
+            String option = scanner.nextLine();
             switch (option) {
-                case 0:
+                case "0":
                     clc();
                     System.out.println("Thank you! Goodbye and have a nice day.");
+                    scanner.close();
                     return;
-                case 1:
+                case "1":
                     clc();
                     store.print();
                     storeMenu();
                     break;
-                case 2:
+                case "2":
                     updateStore();
                     break;
-                case 3:
+                case "3":
                     clc();
                     cart.print();
                     cartMenu();
                     break;
                 default:
                     clc(); 
-                    System.out.println("Invalid option, please choose again.");
+                    System.out.println("Invalid option, please choose a number: 0-1-2-3.");
                     break;
                 }
         }
@@ -112,14 +112,13 @@ public class Aims{
             System.out.println("0. Back");
             System.out.println("--------------------------------");
             System.out.println("Please choose a number: 0-1-2-3-4");
-            int option = scanner.nextInt();
-            scanner.nextLine();
+            String option = scanner.nextLine();
             switch (option) {
-                case 0:
+                case "0":
                     clc();
                     back=true;
                     break;
-                case 1:
+                case "1":
                     while(true){
                         System.out.print("Enter the title of the media to view details(Press 0 to return): ");
                         String title = scanner.nextLine();
@@ -134,7 +133,7 @@ public class Aims{
                         }
                     }
                     break;
-                case 2:
+                case "2":
                     while(true){
                         System.out.print("Enter the title of the media to add to your cart(Press 0 to return): ");
                         String title = scanner.nextLine();
@@ -154,7 +153,7 @@ public class Aims{
                         }
                     }
                     break; 
-                case 3:
+                case "3":
                     while(true){
                         System.out.print("Enter the title of the media to play(Press 0 to return): ");
                         String title = scanner.nextLine();
@@ -171,14 +170,14 @@ public class Aims{
                         }
                     }
                     break;
-                case 4:
+                case "4":
                     clc();
                     cart.print();
                     cartMenu();
                     break;
                 default:
                     clc(); 
-                    System.out.println("Invalid option! Please choose again.");
+                    System.out.println("Invalid option! Please choose a number: 0-1-2-3-4.");
                     break;
                 }
         }  
@@ -196,14 +195,13 @@ public class Aims{
             System.out.println("0. Back");
             System.out.println("--------------------------------");
             System.out.println("Please choose a number: 0-1-2");
-            int option = scanner.nextInt();
-            scanner.nextLine();
+            String option = scanner.nextLine();
             switch (option) {
-                case 0:
+                case "0":
                     clc();
                     back = true;
                     break;
-                case 1:
+                case "1":
                     clc();
                     try {
                         cart.addMedia(media);
@@ -211,7 +209,7 @@ public class Aims{
                         break;
                     }
                     break;
-                case 2:
+                case "2":
                 if(media instanceof CompactDisc || media instanceof DigitalVideoDisc){
                     clc();
                     media.play();
@@ -241,14 +239,13 @@ public class Aims{
             System.out.println("0. Back");
             System.out.println("--------------------------------");
             System.out.println("Please choose a number: 0-1-2-3-4-5");
-            int option = scanner.nextInt();
+            String option = scanner.nextLine();
             switch (option) {
-                case 0:
+                case "0":
                     clc();
                     back=true;
                     break;
-                case 1:
-                    boolean back1 = false;
+                case "1":
                     System.out.println("Filter by:\n(1)Title\n(2)Cost\n");
                     int filterOption = scanner.nextInt();
                     scanner.nextLine();
@@ -280,7 +277,7 @@ public class Aims{
                         }
                     }
                     break;
-                case 2:
+                case "2":
                     System.out.println("Sort medias in cart by (1) title or (2) cost:");
                     int sortOption = scanner.nextInt();
                     scanner.nextLine();
@@ -292,15 +289,23 @@ public class Aims{
                         System.out.println("Invalid option.");
                     }
                     break;
-                case 3:
+                case "3":
                     while(true){
                         System.out.print("Enter the title of the media to remove (press 0 to return): ");
                         String title = scanner.nextLine();
                         if(title.equals("0")) break;
-                        
+                        Media foundMedia = cart.searchByTitle(title);
+                        if(foundMedia==null){
+                            clc();
+                            System.out.println(title+" is not in the cart. Please try another");
+                        }
+                        else{
+                            cart.removeMedia(foundMedia);
+                            System.out.println(foundMedia.getTitle()+" has been successfully removed.");
+                        }
                     }
                     break;
-                case 4:
+                case "4":
                     while(true){
                         System.out.print("Enter the title of the media to play (press 0 to return): ");
                         String title = scanner.nextLine();
@@ -320,12 +325,13 @@ public class Aims{
                         }
                     }
                     break;
-                case 5:
+                case "5":
                     clc();
                     System.out.println("The order has successfully created.\nYour cart is now empty.");
                     cart.empty();
                     break;  
                 default:
+                    System.out.println("Invalid option. Please choose a number: 0-1-2-3-4-5.");
                     break;
             }
         }
@@ -343,25 +349,23 @@ public class Aims{
             System.out.println("0. Back");
             System.out.println("--------------------------------");
             System.out.println("Please choose a number: 0-1-2");
-            int option = scanner.nextInt();
-            scanner.nextLine();
+            String option = scanner.nextLine();
             switch (option) {
-                case 0:
+                case "0":
                     clc();
                     back = true;
                     break;
-                case 1:
+                case "1":
                     boolean back1 = false;
                     while(!back1){
                         System.out.println("Enter the category of the media:\n(1)Book\n(2)CD\n(3)DVD\n(0)Back");
-                        int choice = scanner.nextInt();
-                        scanner.nextLine();
+                        String choice = scanner.nextLine();
                         switch(choice){
-                            case 0:
+                            case "0":
                                 clc();
                                 back1=true;
                                 break;
-                            case 1:
+                            case "1":
                                 clc();
                                 System.out.println("Enter book title: ");
                                 String bookTitle = scanner.nextLine();
@@ -373,7 +377,7 @@ public class Aims{
                                 Book newBook = new Book(bookTitle, bookCategory, bookCost);
                                 store.addMedia(newBook);
                                 break;
-                            case 2:
+                            case "2":
                                 clc();
                                 System.out.println("Enter CD title: ");
                                 String cdTitle = scanner.nextLine();
@@ -411,7 +415,7 @@ public class Aims{
                                     store.addMedia(newCD);
                                 }
                                 break;
-                            case 3:
+                            case "3":
                                 clc();
                                 System.out.println("Enter DVD title: ");
                                 String dvdTitle = scanner.nextLine();
@@ -430,16 +434,15 @@ public class Aims{
                                 break;
                             default:
                                 clc();
-                                System.out.println("Invalid Input! Please try again.");
+                                System.out.println("Invalid Input! Please choose a number: 0-1-2-3.");
                                 break;
                         }
                     }
                     
                     
                     break;
-                case 2:
+                case "2":
                     clc();
-                    boolean back2 = false;
                     while(true){
                         System.out.print("Enter the title of the media to remove from the store (press 0 to return): ");
                         String title = scanner.nextLine();
@@ -451,14 +454,15 @@ public class Aims{
                             System.out.println(title+" is not in the store. Try another.");
                         }
                         else{
+                            System.out.println(foundMedia.getTitle()+" has been removed from the store.");
                             store.removeMedia(foundMedia);
-                            System.out.println(title+" has been removed from the store.");
+                            
                         }
                     }
                     break;
                 default:
                     clc();
-                    System.out.println("Invalid option! Choose again.");
+                    System.out.println("Invalid option! Please choose a number: 0-1-2.");
                     break;
             }
         }
