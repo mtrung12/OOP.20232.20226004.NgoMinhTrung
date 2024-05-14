@@ -1,0 +1,70 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Aims",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.aims.Aims.Aims",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "TestPassingParameter",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.aims.TestPassingParameter.TestPassingParameter",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "CartTest",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.aims.cart.CartTest",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "StoreManagerClass",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.aims.screen.manager.StoreManagerClass",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "StoreTest",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.aims.store.StoreTest",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "ConcatenationInLoops",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.garbage.ConcatenationInLoops",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "GarbageCreator",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.garbage.GarbageCreator",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "NoGarbage",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.garbage.NoGarbage",
+            "projectName": "AimsProject_698dd341"
+        }
+    ]
+}
