@@ -1,5 +1,8 @@
 package hust.soict.ict.aims.media;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 public class Track implements Playable{
     private String title;
     private int length;
@@ -21,7 +24,15 @@ public class Track implements Playable{
         }
         else System.out.println("Track length: " + this.getLength());
     }   
-    
+    @Override
+    public String toStringPlay(){
+        String playString = "Playing Track: " + this.getTitle();
+        if(this.getLength()==0){
+            playString = playString + "\nTrack cannot be played";
+        }
+        else playString = playString + "\nTrack length: "+this.getLength()+"s";
+        return playString;
+    }
     @Override
     public boolean equals(Object o){
         if(!(o instanceof Track)){

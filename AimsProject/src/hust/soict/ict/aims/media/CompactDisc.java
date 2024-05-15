@@ -1,5 +1,9 @@
 package hust.soict.ict.aims.media;
 import java.util.List;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import java.util.ArrayList;
 
 public class CompactDisc extends Disc implements Playable{
@@ -44,8 +48,29 @@ public class CompactDisc extends Disc implements Playable{
     }
 
     @Override
+    public String toStringPlay() {
+        String playString = "Playing CD: " + super.getTitle();
+        String temp;
+        if(this.getLength()==0){
+            playString = playString + "\nCD cannot be played";
+        }
+        else {
+            playString = playString + "\nCD length: "+this.getLength()+"s\n";
+            for(Track track: tracks){
+                playString = playString + "\n"+track.toStringPlay();
+            }
+        }
+        return playString;
+    }
+
+    @Override
     public String toString(){
         String text = String.format("%2d.%-4s-%-25s-%-25s-%-20s-%5ds: %4.2f$", super.getId(),"CD", super.getTitle(), super.getCategory(), super.getDirector(), this.getLength(), super.getCost());
         return text;
     }
+
+    public List<Track> getTracks() {
+        return tracks;
+    }
+
 }
