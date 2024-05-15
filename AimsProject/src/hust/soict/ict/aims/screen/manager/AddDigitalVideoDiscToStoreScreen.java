@@ -17,11 +17,11 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen{
     public AddDigitalVideoDiscToStoreScreen(){
         super();
         directorLabel.setPreferredSize(new Dimension(250,50));
-        directorLabel.setFont(new Font(directorLabel.getFont().getName(), Font.PLAIN, 20));
+        directorLabel.setFont(new Font(directorLabel.getFont().getName(), Font.BOLD, 20));
         directorTf.setPreferredSize(new Dimension(400,40));
 
         lengthLabel.setPreferredSize(new Dimension(250,50));
-        lengthLabel.setFont(new Font(lengthLabel.getFont().getName(), Font.PLAIN, 20));
+        lengthLabel.setFont(new Font(lengthLabel.getFont().getName(), Font.BOLD, 20));
         lengthTf.setPreferredSize(new Dimension(400,40));
 
         
@@ -46,5 +46,11 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen{
     public int getLength() {
         return Integer.parseInt(lengthTf.getText());
     }
-    
+
+    @Override
+    public void refreshTextField(){
+        super.refreshTextField();
+        directorTf.setText("");
+        lengthTf.setText("");
+    }
 }

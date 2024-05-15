@@ -221,13 +221,14 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                         String title = addBookPanel.getTitle();
                         String category = addBookPanel.getCategory();
                         float cost = addBookPanel.getCost();
-                        String authorListString = addBookPanel.getAuthorList();
-                        String[] author = authorListString.split(",");
                         Book book = new Book(title, category, cost);
-                        for(String a: author){
-                            book.addAuthor(a.trim());
-                        }
+                        ArrayList<String> authors = addBookPanel.getAuthors();
+                        authors.forEach(author -> book.addAuthor(author));
                         store.addMedia(book);
+                        getContentPane().removeAll();
+                        viewStore();
+                        revalidate();
+                        repaint();
                     }
                 });
                 addBookButton.setFont(new Font(addBookButton.getFont().getName(), Font.PLAIN, 15));
@@ -258,7 +259,6 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                         viewStore();
                         revalidate();
                         repaint();
-                        setVisible(true);
                     }
                 
                 });
@@ -275,6 +275,7 @@ public class StoreManagerClass extends JFrame implements ActionListener{
 
 
                 case "Add CD":
+                
                 JButton addCDButton = new JButton("Add CD");
                 addCDButton.addActionListener(new ActionListener() {
                     @Override
@@ -284,6 +285,11 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                         float cost = addCDPanel.getCost();
                         CompactDisc cd = new CompactDisc(title, category, text, cost);
                         store.addMedia(cd);
+                        addCDPanel.getTrackList().forEach(track -> cd.addTrack(track));
+                        getContentPane().removeAll();
+                        viewStore();
+                        revalidate();
+                        repaint();
                 }});
                 addCDButton.setFont(new Font(addCDButton.getFont().getName(), Font.PLAIN, 15));
                 getContentPane().removeAll();
