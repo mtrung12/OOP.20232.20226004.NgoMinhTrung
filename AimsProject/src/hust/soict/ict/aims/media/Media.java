@@ -1,5 +1,7 @@
 package hust.soict.ict.aims.media;
 import java.util.Comparator;
+
+import javax.swing.JPanel;
 public abstract class Media implements Comparable<Media>{
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
@@ -44,10 +46,13 @@ public abstract class Media implements Comparable<Media>{
         String text = String.format("%2d-%-25s-%-25s: %4.2f$", id, title, category, cost);
         return text;
     }
-    public void play() {
+    public void play(){
         System.out.println("Playing media");
     }
-
+    public String toStringPlay(){
+        String playString = "Playing Media";
+        return playString;
+    }
     @Override
     public boolean equals(Object o){
         if(!(o instanceof Media)){

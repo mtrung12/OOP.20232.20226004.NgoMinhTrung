@@ -5,15 +5,41 @@ import hust.soict.ict.aims.store.Store;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class StoreManagerClass extends JFrame{
+public class StoreManagerClass extends JFrame implements ActionListener{
     private Store store;
+
 
     public static void main(String[] args) {
         Store newStore = new Store();
         storeInit(newStore);
+//        try {
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         new StoreManagerClass(newStore);
+    }
+
+    public StoreManagerClass(Store store){
+        this.store = store;
+        viewStore();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public void viewStore(){
+        Container cp = getContentPane();
+        cp.setLayout(new BorderLayout());
+        cp.add(createNorth(),BorderLayout.NORTH);
+        cp.add(createCenter(), BorderLayout.CENTER);
+
+        setTitle("Store");
+        setSize(1024,768);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public static void storeInit(Store store){
@@ -50,23 +76,12 @@ public class StoreManagerClass extends JFrame{
         book2.addAuthor("Thomas Harris");
         Book book3 = new Book("The Martian", "Science Fiction", 8.97f);
         book3.addAuthor("Andy Weir");
-        store.addMedia(book1); store.addMedia(book2); store.addMedia(book3);
-
+        Book book4 = new Book("The Lord of the Rings", "Fantasy", 9.25f);
+        book4.addAuthor("J.R.R. Tolkien");
+        store.addMedia(book1); store.addMedia(book2); store.addMedia(book3); store.addMedia(book4);
+        
     }
-    public StoreManagerClass(Store store){
-        this.store = store;
-        Container cp = getContentPane();
-        cp.setLayout(new BorderLayout());
-        cp.add(createNorth(),BorderLayout.NORTH);
-        cp.add(createCenter(), BorderLayout.CENTER);
-
-        setTitle("Store");
-        setSize(1024,768);
-        setLocationRelativeTo(null);
-        setVisible(true);
-    }
-
-
+    
 
     private JPanel createNorth(){
         JPanel north = new JPanel();
@@ -78,13 +93,19 @@ public class StoreManagerClass extends JFrame{
 
     private JMenuBar createMenuBar() {
         JMenu menu = new JMenu("Options");
-
-        menu.add(new JMenuItem(("View store")));
-
+        JMenuItem smViewStore = new JMenuItem("View Store");
+        menu.add(smViewStore);
         JMenu smUpdateStore = new JMenu("Update Store");
-        smUpdateStore.add(new JMenuItem("Add Book"));
-        smUpdateStore.add(new JMenuItem("Add CD"));
-        smUpdateStore.add(new JMenuItem("Add DVD"));
+        JMenuItem addBook = new JMenuItem("Add Book");
+        JMenuItem addDVD = new JMenuItem("Add DVD");
+        JMenuItem addCD = new JMenuItem("Add CD");
+        smUpdateStore.add(addBook);
+        smUpdateStore.add(addCD);
+        smUpdateStore.add(addDVD);
+        smViewStore.addActionListener(this);
+        addBook.addActionListener(this);
+        addCD.addActionListener(this);
+        addDVD.addActionListener(this);
         menu.add(smUpdateStore);
 
         JMenuBar menuBar = new JMenuBar();
@@ -112,17 +133,20 @@ public class StoreManagerClass extends JFrame{
 
     private JPanel createCenter(){
         JPanel center = new JPanel();
-        center.setLayout((new GridLayout(3,3,2,2)));
-
+        JPanel sub_center = new JPanel();
+        sub_center.setLayout((new GridLayout(0,3,3,3)));
         ArrayList<Media> mediaInStore = store.getItemsInStore();
-        for(int i = 0; i<9; i++){
-            MediaStore cell = new MediaStore(mediaInStore.get(i));
-            center.add(cell);
+        for(Media media: mediaInStore){
+            MediaStore cell = new MediaStore(media);
+            sub_center.add(cell);
         }
+        JScrollPane scroll = new JScrollPane(sub_center, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scroll.setPreferredSize(new Dimension(1010,650));
+        center.add(scroll);
         return center;
     }
 
-    public class MediaStore extends  JPanel{
+    public class MediaStore extends  JPanel implements ActionListener{
         private Media media;
         public MediaStore(Media media){
             this.media = media;
@@ -132,15 +156,18 @@ public class StoreManagerClass extends JFrame{
             title.setFont(new Font(title.getFont().getName(), Font.PLAIN, 15));
             title.setAlignmentX((CENTER_ALIGNMENT));
 
-            JLabel cost = new JLabel();
+            JLabel cost = new JLabel(media.getCost()+"$");
             cost.setAlignmentX(CENTER_ALIGNMENT);
 
             JPanel container = new JPanel();
             container.setLayout(new FlowLayout(FlowLayout.CENTER));
-
+            
             if(media instanceof Playable){
-                JButton playButton = new JButton("PLay");
+                JButton playButton = new JButton("Play");
+                playButton.setPreferredSize(new Dimension(80,40));
+                playButton.setFont(new Font(playButton.getFont().getName(), Font.PLAIN, 15));
                 container.add(playButton);
+                playButton.addActionListener(this);
             }
 
             this.add(Box.createVerticalGlue());
@@ -150,6 +177,124 @@ public class StoreManagerClass extends JFrame{
             this.add(container);
 
             this.setBorder(BorderFactory.createLineBorder((Color.BLACK)));
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Object source = e.getSource();
+            if(source instanceof JButton){
+                JButton pressed = (JButton) source;
+                String text = pressed.getText();
+                if(text.equals("Play")){
+                    String playMessage = media.toStringPlay();
+                    JOptionPane.showMessageDialog(null, playMessage, "Playing", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        }
+    }
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        AddBookToStoreScreen addBookPanel = new AddBookToStoreScreen();
+        AddDigitalVideoDiscToStoreScreen addDVDPanel = new AddDigitalVideoDiscToStoreScreen();
+        AddCompactDiscToStoreScreen addCDPanel = new AddCompactDiscToStoreScreen();
+
+        if(source instanceof JMenuItem){
+            JMenuItem choice  = (JMenuItem) source;
+            String text = choice.getText();
+            switch(text){
+                case "View Store":
+                getContentPane().removeAll();
+                viewStore();
+                revalidate();
+                repaint();
+                setVisible(true);
+                break;
+
+
+                case "Add Book":
+                JButton addBookButton = new JButton("Add Book");
+                addBookButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String title = addBookPanel.getTitle();
+                        String category = addBookPanel.getCategory();
+                        float cost = addBookPanel.getCost();
+                        String authorListString = addBookPanel.getAuthorList();
+                        String[] author = authorListString.split(",");
+                        Book book = new Book(title, category, cost);
+                        for(String a: author){
+                            book.addAuthor(a.trim());
+                        }
+                        store.addMedia(book);
+                    }
+                });
+                addBookButton.setFont(new Font(addBookButton.getFont().getName(), Font.PLAIN, 15));
+                
+                getContentPane().removeAll();
+                add(createNorth(), BorderLayout.NORTH);
+                add(addBookPanel, BorderLayout.CENTER);
+                add(addBookButton, BorderLayout.SOUTH);
+                revalidate();
+                repaint();
+                setVisible(true);
+                break;
+
+
+                case "Add DVD":
+                JButton addDVDButton = new JButton("Add DVD");
+                addDVDButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String title = addDVDPanel.getTitle();
+                        String category = addDVDPanel.getCategory();
+                        float cost = addDVDPanel.getCost();
+                        String director = addDVDPanel.getDirector();
+                        int length = addDVDPanel.getLength();
+                        DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
+                        store.addMedia(dvd);
+                        getContentPane().removeAll();
+                        viewStore();
+                        revalidate();
+                        repaint();
+                        setVisible(true);
+                    }
+                
+                });
+                addDVDButton.setFont(new Font(addDVDButton.getFont().getName(), Font.PLAIN, 15));
+
+                getContentPane().removeAll();
+                add(createNorth(), BorderLayout.NORTH);
+                add(addDVDPanel, BorderLayout.CENTER);
+                add(addDVDButton, BorderLayout.SOUTH);
+                revalidate();
+                repaint();
+                setVisible(true);
+                break;
+
+
+                case "Add CD":
+                JButton addCDButton = new JButton("Add CD");
+                addCDButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        String title = addCDPanel.getTitle();
+                        String category = addCDPanel.getCategory();
+                        float cost = addCDPanel.getCost();
+                        CompactDisc cd = new CompactDisc(title, category, text, cost);
+                        store.addMedia(cd);
+                }});
+                addCDButton.setFont(new Font(addCDButton.getFont().getName(), Font.PLAIN, 15));
+                getContentPane().removeAll();
+                add(createNorth(), BorderLayout.NORTH);
+                add(addCDPanel, BorderLayout.CENTER);
+                add(addCDButton, BorderLayout.SOUTH);
+                revalidate();
+                repaint();
+                setVisible(true);
+                break;
+            }
         }
     }
 }
