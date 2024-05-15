@@ -23,13 +23,13 @@ public abstract class AddItemToStoreScreen extends JPanel {
         c.fill = GridBagConstraints.HORIZONTAL;
         // this.setBorder(BorderFactory.createEmptyBorder(15,15,15,15));
         titleLabel.setPreferredSize(new Dimension(250,50));
-        titleLabel.setFont(new Font(titleLabel.getFont().getName(), Font.PLAIN, 20));
+        titleLabel.setFont(new Font(titleLabel.getFont().getName(), Font.BOLD, 20));
 
         categoryLabel.setPreferredSize(new Dimension(250,50));
-        categoryLabel.setFont(new Font(titleLabel.getFont().getName(), Font.PLAIN, 20));
+        categoryLabel.setFont(new Font(titleLabel.getFont().getName(), Font.BOLD, 20));
 
         costLabel.setPreferredSize(new Dimension(250,50));
-        costLabel.setFont(new Font(titleLabel.getFont().getName(), Font.PLAIN, 20));
+        costLabel.setFont(new Font(titleLabel.getFont().getName(), Font.BOLD, 20));
 
         titleTf.setPreferredSize(new Dimension(400,40));
         categoryTf.setPreferredSize(new Dimension(400,40));
@@ -63,7 +63,11 @@ public abstract class AddItemToStoreScreen extends JPanel {
         return Float.parseFloat(costTf.getText());
     }
     
-
+    public void refreshTextField(){
+        titleTf.setText("");
+        categoryTf.setText("");
+        costTf.setText("");
+    }
     
 
 }

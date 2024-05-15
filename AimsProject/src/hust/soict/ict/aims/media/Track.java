@@ -26,11 +26,14 @@ public class Track implements Playable{
     }   
     @Override
     public String toStringPlay(){
-        String playString = "Playing Track: " + this.getTitle();
+        String playString = new String();
+        int length = this.getLength();
+        int minute = length/60;
+        int second = length%60;
         if(this.getLength()==0){
             playString = playString + "\nTrack cannot be played";
         }
-        else playString = playString + "\nTrack length: "+this.getLength()+"s";
+        else playString = playString + "["+minute+":"+second +"]"+this.getTitle();
         return playString;
     }
     @Override

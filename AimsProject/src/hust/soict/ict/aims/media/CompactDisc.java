@@ -55,7 +55,7 @@ public class CompactDisc extends Disc implements Playable{
             playString = playString + "\nCD cannot be played";
         }
         else {
-            playString = playString + "\nCD length: "+this.getLength()+"s\n";
+            playString = playString + "\nCD length: "+this.getLength()+"s\n\n"+"Tracks:";
             for(Track track: tracks){
                 playString = playString + "\n"+track.toStringPlay();
             }
