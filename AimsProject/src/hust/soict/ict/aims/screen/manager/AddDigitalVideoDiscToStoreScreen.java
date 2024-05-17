@@ -24,7 +24,7 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen{
         lengthLabel.setFont(new Font(lengthLabel.getFont().getName(), Font.BOLD, 20));
         lengthTf.setPreferredSize(new Dimension(400,40));
 
-        
+
 
         GridBagConstraints c = new GridBagConstraints();
         c.fill=GridBagConstraints.HORIZONTAL;
