@@ -218,9 +218,11 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                 addBookButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        float cost;
                         String title = addBookPanel.getTitle();
                         String category = addBookPanel.getCategory();
-                        float cost = addBookPanel.getCost();
+                        if(addBookPanel.getCost()!=-1) cost = addBookPanel.getCost();
+                        else return;
                         Book book = new Book(title, category, cost);
                         ArrayList<String> authors = addBookPanel.getAuthors();
                         authors.forEach(author -> book.addAuthor(author));
@@ -248,9 +250,11 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                 addDVDButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        float cost;
                         String title = addDVDPanel.getTitle();
                         String category = addDVDPanel.getCategory();
-                        float cost = addDVDPanel.getCost();
+                        if(addDVDPanel.getCost()!=-1) cost = addDVDPanel.getCost();
+                        else return;
                         String director = addDVDPanel.getDirector();
                         int length = addDVDPanel.getLength();
                         DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
@@ -280,9 +284,11 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                 addCDButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        float cost;
                         String title = addCDPanel.getTitle();
                         String category = addCDPanel.getCategory();
-                        float cost = addCDPanel.getCost();
+                        if(addCDPanel.getCost()!=-1) cost = addCDPanel.getCost();
+                        else return;
                         CompactDisc cd = new CompactDisc(title, category, text, cost);
                         store.addMedia(cd);
                         addCDPanel.getTrackList().forEach(track -> cd.addTrack(track));

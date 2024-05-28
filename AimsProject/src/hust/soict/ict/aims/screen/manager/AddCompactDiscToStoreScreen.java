@@ -66,8 +66,18 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen{
         addTrackButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int length;
                 String title = trackTitleTf.getText();
-                int length = Integer.parseInt(trackLengthTf.getText());
+                try{
+                    length = Integer.parseInt(trackLengthTf.getText());
+                    if(length<=0) throw new Exception();
+                }catch(NumberFormatException exception){
+                    JOptionPane.showMessageDialog(null, "Track length must be an integer", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(null, "Track length must be greater than 0", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 Track newTrack = new Track(title, length);
                 if(trackList.contains(newTrack)){
                     JOptionPane.showMessageDialog(null, "This track is already in the list", "Error", JOptionPane.ERROR_MESSAGE);
