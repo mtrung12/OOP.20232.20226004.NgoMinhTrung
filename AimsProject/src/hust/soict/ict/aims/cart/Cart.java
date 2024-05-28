@@ -6,9 +6,13 @@ import java.util.Iterator;
 import javax.naming.LimitExceededException;
 
 import hust.soict.ict.aims.media.*;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
-    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     //add media method
     public void addMedia(Media media) throws LimitExceededException{
         if(itemsOrdered.size()>=MAX_NUMBERS_ORDERED){
@@ -79,9 +83,7 @@ public class Cart {
     }
     //empty the cart
     public void empty(){
-        for(Media media:itemsOrdered){
-            media = null;
-        }
+        itemsOrdered.clear();
     }
 
     //sort the media in the cart
@@ -100,5 +102,8 @@ public class Cart {
         }
     }
 
+    public ObservableList<Media> getItemsOrdered() {
+        return itemsOrdered;
+    }
 
 }

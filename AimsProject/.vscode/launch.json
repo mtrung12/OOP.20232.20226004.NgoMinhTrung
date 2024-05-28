@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TestViewStoreScreen",
+            "request": "launch",
+            "mainClass": "AimsProject/hust.soict.ict.aims.screen.customer.store.TestViewStoreScreen",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
+            "name": "TestViewStoreScreenLauncher",
+            "request": "launch",
+            "mainClass": "hust.soict.ict.aims.screen.customer.store.TestViewStoreScreenLauncher",
+            "projectName": "AimsProject_698dd341"
+        },
+        {
+            "type": "java",
             "name": "AddItemToStoreScreen",
             "request": "launch",
             "mainClass": "hust.soict.ict.aims.screen.manager.AddItemToStoreScreen",

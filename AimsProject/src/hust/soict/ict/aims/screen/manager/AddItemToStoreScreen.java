@@ -60,7 +60,17 @@ public abstract class AddItemToStoreScreen extends JPanel {
     }
 
     public float getCost() {
-        return Float.parseFloat(costTf.getText());
+        float cost=-1;
+        try{
+            cost =  Float.parseFloat(costTf.getText());
+            if(cost<0) throw new Exception();
+            return cost;
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Cost must be a number", "Error", JOptionPane.ERROR_MESSAGE);
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Cost must be greater than 0", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        return cost;
     }
     
     public void refreshTextField(){
