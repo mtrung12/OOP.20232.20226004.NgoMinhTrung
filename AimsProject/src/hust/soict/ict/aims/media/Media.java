@@ -1,4 +1,6 @@
 package hust.soict.ict.aims.media;
+import hust.soict.ict.aims.exception.PlayerException;
+
 import java.util.Comparator;
 
 import javax.swing.JPanel;
@@ -46,7 +48,7 @@ public abstract class Media implements Comparable<Media>{
         String text = String.format("%2d-%-25s-%-25s: %4.2f$", id, title, category, cost);
         return text;
     }
-    public void play(){
+    public void play() throws PlayerException {
         System.out.println("Playing media");
     }
     public String toStringPlay(){
@@ -55,14 +57,26 @@ public abstract class Media implements Comparable<Media>{
     }
     @Override
     public boolean equals(Object o){
+        if(o == null){
+            return false;
+        }
         if(!(o instanceof Media)){
             return false;
         }
-        return ((Media)o).getTitle()==this.title;
+        Media other = null;
+        try {
+            other = (Media) o;
+        } catch (ClassCastException e) {
+            return false;
+        }
+        return (other.getTitle().equals(this.title)) && (other.getCost() == this.cost);
     }
 
     @Override
     public int compareTo(Media other) {
+        if(other == null){
+            throw new NullPointerException("The provided Media object is null");
+        }
         int titleComparison = this.getTitle().compareTo(other.getTitle());
         if (titleComparison != 0) {
             return titleComparison;

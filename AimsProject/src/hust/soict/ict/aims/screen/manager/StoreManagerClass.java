@@ -16,11 +16,6 @@ public class StoreManagerClass extends JFrame implements ActionListener{
     public static void main(String[] args) {
         Store newStore = new Store();
         storeInit(newStore);
-//        try {
-//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
         new StoreManagerClass(newStore);
     }
 
@@ -221,10 +216,15 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                         float cost;
                         String title = addBookPanel.getTitle();
                         String category = addBookPanel.getCategory();
+                        stringNull(title); stringNull(category);
                         if(addBookPanel.getCost()!=-1) cost = addBookPanel.getCost();
                         else return;
                         Book book = new Book(title, category, cost);
                         ArrayList<String> authors = addBookPanel.getAuthors();
+                        if(authors.size()==0){
+                            JOptionPane.showMessageDialog(null, "Author field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
                         authors.forEach(author -> book.addAuthor(author));
                         store.addMedia(book);
                         getContentPane().removeAll();
@@ -251,12 +251,21 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         float cost;
+                        int length;
                         String title = addDVDPanel.getTitle();
                         String category = addDVDPanel.getCategory();
+                        stringNull(title); stringNull(category);
                         if(addDVDPanel.getCost()!=-1) cost = addDVDPanel.getCost();
-                        else return;
+                        else{
+                            JOptionPane.showMessageDialog(null, "Invalid input", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
                         String director = addDVDPanel.getDirector();
-                        int length = addDVDPanel.getLength();
+                        if(addDVDPanel.getLength()!=-1) length = addDVDPanel.getLength();
+                        else{
+                            JOptionPane.showMessageDialog(null, "Invalid input", "Error", JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
                         DigitalVideoDisc dvd = new DigitalVideoDisc(title, category, director, length, cost);
                         store.addMedia(dvd);
                         getContentPane().removeAll();
@@ -287,6 +296,7 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                         float cost;
                         String title = addCDPanel.getTitle();
                         String category = addCDPanel.getCategory();
+                        stringNull(title); stringNull(category);
                         if(addCDPanel.getCost()!=-1) cost = addCDPanel.getCost();
                         else return;
                         CompactDisc cd = new CompactDisc(title, category, text, cost);
@@ -308,7 +318,16 @@ public class StoreManagerClass extends JFrame implements ActionListener{
                 break;
             }
         }
+
+    }
+
+    public void stringNull(String str){
+        if(str.equals("")){
+            JOptionPane.showMessageDialog(null, "Field cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
     }
 }
+
 
 

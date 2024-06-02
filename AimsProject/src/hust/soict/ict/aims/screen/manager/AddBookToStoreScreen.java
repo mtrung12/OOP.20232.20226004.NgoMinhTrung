@@ -40,6 +40,10 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String authorString = authorTf.getText();
+                if(authorString.equals("")){
+                    JOptionPane.showMessageDialog(null, "Author cannot be empty", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 String[] newAuthors = authorString.split(",");
                 for (String author: newAuthors){
                     author = author.trim();

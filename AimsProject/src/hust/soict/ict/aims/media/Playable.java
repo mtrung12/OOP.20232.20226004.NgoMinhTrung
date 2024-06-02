@@ -1,9 +1,9 @@
 package hust.soict.ict.aims.media;
 
-import javax.swing.JPanel;
+import hust.soict.ict.aims.exception.PlayerException;
 
 public interface Playable {
-    public void play();
+    public void play() throws PlayerException;
 
     public String toStringPlay();
 }
