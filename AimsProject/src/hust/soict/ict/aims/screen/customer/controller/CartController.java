@@ -170,8 +170,8 @@ public class CartController {
     public void placeOrderPressed(){
         Dialog<String> dialog = new Dialog<>();
         DialogPane dialogPane = new DialogPane();
-        dialogPane.setContentText("Order placed successfully");
-        dialogPane.setHeaderText("Order Placed");
+        dialogPane.setContentText("Your order has been created\nTotal cost: "+cart.totalCost()+"$\nThank you for shopping with us!");
+        dialogPane.setHeaderText("Order Created");
         dialog.setDialogPane(dialogPane);
         // Create a ButtonType for closing the dialog
         ButtonType closeButton = new ButtonType("Confirm");

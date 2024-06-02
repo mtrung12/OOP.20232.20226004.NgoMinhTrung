@@ -1,6 +1,8 @@
 package hust.soict.ict.aims.media;
 
 
+import hust.soict.ict.aims.exception.PlayerException;
+
 public class DigitalVideoDisc extends Disc implements Playable{
     private String director;
     private int length;
@@ -35,13 +37,15 @@ public class DigitalVideoDisc extends Disc implements Playable{
     }
 
     @Override
-    public void play(){
-        System.out.println("Playing DVD: " + super.getTitle());
-        if(super.getLength()==0){
-            System.out.println("DVD cannot be played.");
-        }
-        else
+    public void play() throws PlayerException{
+        if(super.getLength()>0){
+            System.out.println("Playing DVD: " + super.getTitle());
             System.out.println("DVD length: " + super.getLength());
+        }
+        else{
+            throw new PlayerException("ERROR: DVD cannot be played");
+        }
+
     }   
 
     @Override

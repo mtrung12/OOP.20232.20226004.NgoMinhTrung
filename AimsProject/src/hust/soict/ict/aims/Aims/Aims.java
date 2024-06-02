@@ -1,16 +1,18 @@
 package hust.soict.ict.aims.Aims;
 import java.util.Scanner;
 import javax.naming.LimitExceededException;
+import javax.swing.*;
 
 import hust.soict.ict.aims.cart.Cart;
+import hust.soict.ict.aims.exception.PlayerException;
 import hust.soict.ict.aims.media.*;
 import hust.soict.ict.aims.store.*;
 public class Aims{
     private static Cart cart = new Cart();
     private static Store store = new Store();
-    public static void main(String[] args){
-        storeSetup();
-        showMenu();
+    public static void main(String[] args) throws PlayerException {
+            storeSetup();
+            showMenu();
         
     }
 
@@ -163,7 +165,11 @@ public class Aims{
                             System.out.println(title+" is not in the store. Please try another.");
                         }
                         else if(foundMedia instanceof CompactDisc || foundMedia instanceof DigitalVideoDisc){
-                            foundMedia.play();
+                            try{
+                                foundMedia.play();
+                            }catch(Exception e){
+                                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                         else{
                             System.out.println(title+ " cannot be played! Please try another.");
@@ -212,7 +218,11 @@ public class Aims{
                 case "2":
                 if(media instanceof CompactDisc || media instanceof DigitalVideoDisc){
                     clc();
-                    media.play();
+                    try {
+                        media.play();
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
                 else{
                     System.out.println(media.getTitle()+ " cannot be played! Please try another.");
@@ -317,7 +327,11 @@ public class Aims{
                         }
                         else if(foundMedia instanceof CompactDisc || foundMedia instanceof DigitalVideoDisc){
                             clc();
-                            foundMedia.play();
+                            try{
+                                foundMedia.play();
+                            }catch(Exception e){
+                                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
                         else{
                             clc();

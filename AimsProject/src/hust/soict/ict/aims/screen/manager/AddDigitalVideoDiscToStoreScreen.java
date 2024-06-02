@@ -44,7 +44,16 @@ public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen{
     }
 
     public int getLength() {
-        return Integer.parseInt(lengthTf.getText());
+        int length = -1;
+        try {
+            length = Integer.parseInt(lengthTf.getText());
+            if(length < 0) {
+                return -1;
+            }
+            return length;
+        } catch (NumberFormatException e) {
+            return -1;
+        }
     }
 
     @Override
